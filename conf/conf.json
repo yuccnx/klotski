@@ -1,0 +1,26 @@
+{
+  "display": {
+    "view": {
+      "cell": 110,
+      "cell_start_x": 108,
+      "cell_start_y": 104,
+      "width": 660,
+      "height": 750
+    },
+    "images": {
+      "board": "./images/board.png",
+      "roles": {
+        "a": "./images/zu.png",
+        "b": "./images/zu.png",
+        "c": "./images/zu.png",
+        "d": "./images/zu.png",
+        "M": "./images/machao.png",
+        "H": "./images/huangzhong.png",
+        "Z": "./images/zhangfei.png",
+        "Y": "./images/zhaoyun.png",
+        "G": "./images/guanyu.png",
+        "C": "./images/caocao.png"
+      }
+    }
+  }
+}
