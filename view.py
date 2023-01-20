@@ -11,17 +11,20 @@ import time
 import sys
 import pygame
 
-class TextDisplayer:
-    def __init__(self):
-        pass
+def NewViewer(conf):
+    return TextModelViewer(conf) if conf['text_model'] else ImageModelViewer(conf)
+
+
+class TextModelViewer:
+    def __init__(self, conf):
+        self.fps = conf['fps']
 
     def displays(self, boards):
-        print("====== result ======")
         for board in boards:
             os.system('clear')
-            print("\n\n\n答案：\n")
+            print("\n\n答案演示：\n")
             self._display(board)
-            time.sleep(1)
+            time.sleep(1 / self.fps)
 
     def _display(self, board):
         name_map = {
@@ -39,24 +42,25 @@ class TextDisplayer:
         }
 
         key = str(board)
-        ans = ''
+        ans = '  '
         for i in range(len(key)):
             ans = ans + name_map[key[i]]
             if (i+1) % 4 == 0:
-                ans = ans + '\n'
+                ans = ans + '\n  '
 
         print(ans)
 
 
-class ImageDisplayer:
+class ImageModelViewer:
     def __init__(self, conf):
         view = conf['view']
         self.board_width = view['width']
         self.board_height = view['height']
 
-        self.cell_start_x = view['cell_start_x']
-        self.cell_start_y = view['cell_start_y']
-        self.cell = view['cell']
+        self.cell_start_x = view['cell_start_x'] # 格子开始未知
+        self.cell_start_y = view['cell_start_y'] # 格子开始未知
+        self.cell = view['cell'] # 格子的大小
+        self.fps = conf['fps']   # 每秒帧数
 
         pygame.init()
 
@@ -82,7 +86,7 @@ class ImageDisplayer:
                     print("exit~")
                     sys.exit()
 
-            index = int(time.time() - time_start - 2)
+            index = int((time.time() - time_start) * self.fps - 2) # -2 是想延后2s 开始播放
             index = max(0, index)
             index = min(index, len(boards) - 1)
 

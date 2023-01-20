@@ -20,10 +20,8 @@ def main():
         print("not found result~")
         return
 
-    # display = view.TextDisplayer()
-    display = view.ImageDisplayer(conf["display"])
-    display.displays(boards)
-
+    viewer = view.NewViewer(conf["display"])
+    viewer.displays(boards)
 
 if __name__ == '__main__':
     main()
