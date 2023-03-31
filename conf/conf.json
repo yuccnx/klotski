@@ -1,6 +1,6 @@
 {
   "display": {
-    "text_model":false,
+    "text_model":true,
     "fps":3,
     "view": {
       "cell": 110,
