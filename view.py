@@ -65,7 +65,7 @@ class ImageModelViewer:
         pygame.init()
 
         screen = pygame.display.set_mode((self.board_width, self.board_height))
-        pygame.display.set_caption("华容道-云中买马制作")
+        pygame.display.set_caption("华容道-云中买马制作（公众号：逻辑客栈，博客：https://blog.yuccn.net)")
 
         self.screen = screen
 
